@@ -1,0 +1,2 @@
+# Proxy_Grabber
+This is an alternative to expensive rotating proxies.  This program utilizes the Grey_Harvest python module to grab proxies.  It confirms the proxies are currently working by creating a test request, and it saves it to a list that can be accessed by another program.  This is not an alternative to privatized proxies, which are usually sold at higher prices than rotating proxies.  These would be great for webscraping.
