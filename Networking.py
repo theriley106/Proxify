@@ -10,7 +10,11 @@ import os
 from datetime import datetime
 import glob
 
-
+def WriteListToFile(listname, file):
+	with open(file, "w") as csv_file:
+		writer = csv.writer(csv_file, delimiter=',')
+		for listnam in listname:
+			writer.writerow([listnam])
 
 def FindNewestCSV():
 	return max(glob.iglob('*.[cC][Ss][vV]'), key=os.path.getctime)
@@ -37,6 +41,7 @@ def GrabGreyProxy():
 			print(proxy)
 			if CheckProxy(proxy) == True and str(proxy) not in Proxies:
 				AddProxyToList(proxy)
+				WriteListToFile(Proxies, 'ProxyList.csv')
 			else:
 				print('Proxy Not Saved')
 		print('Started Runned')
@@ -78,18 +83,13 @@ def ReturnProxies(number=1):
 	return ProxyListGen
 
 
-def WriteListToFile(listname, file):
-	with open(file, "w") as csv_file:
-		writer = csv.writer(csv_file, delimiter=',')
-		writer.writerow(listname)
+
 
 if __name__ == "__main__":
 	print('Starting')
 	threading.Thread(target=GrabGreyProxy).start()
 	threading.Thread(target=ContinueProxies).start()
-	while True:
-		time.sleep(60)
-		WriteListToFile(Proxies, 'ProxyList.csv')
+		
 
 
 
