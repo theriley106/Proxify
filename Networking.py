@@ -48,7 +48,7 @@ def GrabGreyProxy():
 def CheckProxy(proxy):
 	proxy = {'https': '{}'.format(proxy), 'http': '{}'.format(proxy)}
 	try:
-		requests.get('http://www.google.com', proxies=proxy)
+		requests.get('http://www.google.com', proxies=proxy, timeout=10)
 		return True
 	except Exception as exp:
 		return False
