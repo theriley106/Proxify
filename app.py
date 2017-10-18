@@ -14,11 +14,13 @@ SECRET = str(open("../SecretCode.txt").read())
 @app.route('/proxies/<code>', methods=['POST'])
 def getProxies(code):
 	try:
-		if str(code) == SECRET:
+		if str(code) == str(SECRET):
 			with open('ProxyList.csv', 'rb') as f:
 			    reader = csv.reader(f)
 			    your_list = list(set(list(reader)))
 			return {"Proxies": your_list}
+		else:
+			return "Invalid Code"
 	except:
 		return "ERROR"
 
