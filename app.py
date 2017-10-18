@@ -21,7 +21,8 @@ def getProxies(code):
 			return {"Proxies": your_list}
 		else:
 			return "Invalid Code"
-	except:
+	except Exception as exp:
+		print exp
 		return "ERROR"
 
 
