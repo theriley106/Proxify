@@ -18,7 +18,7 @@ def getProxies(code):
 			with open('ProxyList.csv', 'rb') as f:
 			    reader = csv.reader(f)
 			    your_list = list(reader)
-			return {"Proxies": your_list}
+			return jsonify({"Proxies": your_list})
 		else:
 			return "Invalid Code"
 	except Exception as exp:
