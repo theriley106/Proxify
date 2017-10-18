@@ -15,10 +15,14 @@ SECRET = str(open("../SecretCode.txt").read()).strip()
 def getProxies(code):
 	try:
 		if str(code) == str(SECRET):
+			proxies = []
 			with open('ProxyList.csv', 'rb') as f:
 			    reader = csv.reader(f)
 			    your_list = list(reader)
-			return jsonify({"Proxies": your_list})
+			for e in your_list:
+				proxies.append(e[0])
+			your_list = list(set(proxies))
+			return jsonify({"proxies": your_list})
 		else:
 			return "Invalid Code"
 	except Exception as exp:
