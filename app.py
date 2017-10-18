@@ -9,7 +9,7 @@ import csv
 
 app = Flask(__name__)
 
-SECRET = str(open("../SecretCode.txt").read())
+SECRET = str(open("../SecretCode.txt").read()).strip()
 
 @app.route('/proxies/<code>', methods=['POST'])
 def getProxies(code):
