@@ -17,7 +17,7 @@ def getProxies(code):
 		if str(code) == str(SECRET):
 			with open('ProxyList.csv', 'rb') as f:
 			    reader = csv.reader(f)
-			    your_list = list(set(list(reader)))
+			    your_list = list(reader)
 			return {"Proxies": your_list}
 		else:
 			return "Invalid Code"
