@@ -6,6 +6,8 @@ sys.setdefaultencoding('utf-8')
 from flask import Flask, request, render_template, request, url_for, redirect, Markup, Response, send_file, send_from_directory, make_response, jsonify
 import requests
 import csv
+import time
+from time import gmtime, strftime
 
 app = Flask(__name__)
 
@@ -22,7 +24,7 @@ def getProxies(code):
 			for e in your_list:
 				proxies.append(e[0])
 			your_list = list(set(proxies))
-			return jsonify({"proxies": your_list})
+			return jsonify({"proxies": your_list, "time": strftime("%Y-%m-%d %H:%M:%S", gmtime())})
 		else:
 			return "Invalid Code"
 	except Exception as exp:
